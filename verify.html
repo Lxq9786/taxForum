@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加多列</title>
+    <script src="taxforum/html/jquery-3.3.1.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+<!--<table>-->
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<th>编号</th>-->
+        <!--<th>姓名</th>-->
+        <!--<th>职位</th>-->
+        <!--<th>操作</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody id="tbMain"></tbody>-->
+<!--</table>-->
+<button id="btn">点击创建元素</button>
+<button id="php">获取php返回数据</button>
+<button id="arr">点击遍历json数组</button>
+<button id="func1">点击获取php文件里的函数a</button>
+<button id="func2">点击获取php文件里的函数b</button>
+<div id="bdiv" style="border: 1px solid #2b669a;"></div>
+</body>
+<script>
+    $(function () {
+        // var per=[{id:"001",name:"张三",job:"会计"},
+        //     {id:"002",name:"李四",job:"学生"},
+        //     {id:"003",name:"网一",job:"经理"}];
+        // var tbody=$("#tbMain");
+        // for(var i=0;i<per.length;i++){
+        //     var trow=getDataRow(per[i]);
+        //     tbody.appendChild(trow);
+        // }
+        // function getDataRow(h) {
+        //     //jQuery创建元素
+        //     var text1=$("<p></p>").text(h.name);
+        //     tbody.append(text1);
+        // }
+        // $.get("question.php",function (data) {
+        //     alert(data);
+        // });
+
+        $("#btn").click(function () {
+            var text1=$("<p></p>").text("看见我啦！");
+            $("#bdiv").append(text1);
+        });
+        $("#php").click(function () {
+            $.get("question.php",function (data) {
+                alert(data);
+            })
+        });
+        $("#arr").click(function () {
+            var d1 =[{"text":"王家湾","value":"9"},{"text":"李家湾","value":"10"},{"text":"邵家湾","value":"13"}];
+            $(d1).each(function () {
+                alert(this.text+" "+this.value);
+            });
+        });
+
+        $("#func1").click(function () {
+            $.get("test2.php",function (data) {
+                var text1=$("<p></p>").text(data);
+                $("#bdiv").append(text1);
+            });
+            // $.ajax({
+            //     url:"test2.php",
+            //     dataType:"json",
+            //     success:function (data) {
+            //         console.log(data);
+            //     }
+            // });
+        });
+    });
+</script>
+</html>
